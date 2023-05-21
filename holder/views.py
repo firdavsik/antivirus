@@ -10,11 +10,16 @@ class IndexPage(View):
         return render(request, 'holder/index.html')
 
     def post(self, request):
-        print(request.FILES)
-        file_data = request.FILES['file_data']
-        print(file_data)
-        print(file_data.name)
-        new_queue = Queue(file_data=file_data, file_name=file_data.name)
+        print(request.POST)
+        new_queue = Queue()
+
+        new_queue.file_url = request.POST['file_url']
+
+        if request.FILES.get('file_data'):
+            file_data = request.FILES['file_data']
+            new_queue.file_data = file_data
+            new_queue.file_name = file_data.name
+
         new_queue.save()
         return redirect('result', result_id=new_queue.uniq_id)
 
