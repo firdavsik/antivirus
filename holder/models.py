@@ -17,3 +17,4 @@ class Queue(models.Model):
 
     response = models.JSONField(null=True)
     is_scanned = models.BooleanField(default=False)
+    has_error = models.BooleanField(default=False)
