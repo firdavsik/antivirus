@@ -29,7 +29,11 @@
 
 <div class="container mt-3">
     <h5>
-        Файл: <b style="color: #00A88E;">{{ queue.file_name }}</b>
+        {% if queue.file_data %}
+            Файл: <b style="color: #00A88E;">{{ queue.file_name }}</b>
+        {% else %}
+            URL Файла: <b style="color: #00A88E;">{{ queue.file_url }}</b>
+        {% endif %}
     </h5>
 </div>
 
