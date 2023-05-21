@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<div>
+    <div class="shadow-sm">
+        <div class="container py-1">
+            <div class="row">
+                <div class="col-2 h2" style="color: #00A88E;">Antivirus</div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row" style="padding: 80px 0;">
+            <div class="col h2" style="text-align: center">
+                Онлайн <span style="color: #00A88E; font-weight: bold;">антивирус</span>, с глубоким сканированием
+                файлов
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Отправьте ссылку для сканирования</label>
+                    <input class="form-control"
+                           type="text"
+                           id="formFile"
+                           name="file_url"
+                           placeholder="https://site.ru/my_file.zip"
+                    >
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Отправьте файл для сканирования</label>
+                    <input class="form-control"
+                           type="file"
+                           id="formFile"
+                           name="file_data"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-1"></div>
+            <div class="col">
+                Сканируя файлы, <span style="font-weight:bold; color: #00A88E; margin: 0 10px;"> вы даете добро на хранение и обработку</span>
+                загруженных файлов. Сервис не предоставляет ваши файлы третьим сторонам. Ваши файлы будут загружены на
+                дисковое пространство сервиса, и обработаны! После проверки файлы будут удалены!
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col" style="display: flex; justify-content: center;">
+                <input type="submit" class="btn btn-lg btn-outline-primary" value="Сканировать"/>
+            </div>
+
+        </div>
+
+    </div>
+</form>
+
+</body>
+</html>
