@@ -36,7 +36,8 @@
                                         <tbody>
                                         {% for queue in queue_history %}
                                             <tr>
-                                                <th scope="row" class="col-7" style="max-width: 350px;">
+                                                <th scope="row" class="col-7"
+                                                    style="max-width: 350px; word-break: break-all;">
                                                     <a href="{% url 'result' result_id=queue.uniq_id %}">
                                                         {% if queue.file_url %}
                                                             {{ queue.file_url }}
