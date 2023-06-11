@@ -37,11 +37,13 @@
                                         {% for queue in queue_history %}
                                             <tr>
                                                 <th scope="row" class="col-7">
-                                                    {% if queue.file_url %}
-                                                        {{ queue.file_url }}
-                                                    {% else %}
-                                                        {{ queue.file_name }}
-                                                    {% endif %}
+                                                    <a href="{% url 'result' result_id=queue.uniq_id %}">
+                                                        {% if queue.file_url %}
+                                                            {{ queue.file_url }}
+                                                        {% else %}
+                                                            {{ queue.file_name }}
+                                                        {% endif %}
+                                                    </a>
                                                 </th>
                                                 <td>{{ queue.created_at_loc }}</td>
                                                 <td>
