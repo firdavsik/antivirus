@@ -2,16 +2,30 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 # Create your views here.
-from holder.models import Queue
+from holder.models import Queue, User
+
+
+def get_user(request):
+    return User.objects.filter(uniq_uuid=request.COOKIES.get('user_uuid')).first()
 
 
 class IndexPage(View):
     def get(self, request):
-        return render(request, 'holder/index.html')
+        user = get_user(request)
+        queue_history = []
+        if user:
+            queue_history = Queue.objects.filter(user=user).order_by('-created_at').all()
+        return render(
+            request,
+            'holder/index.html',
+            context={'queue_history': queue_history}
+        )
 
     def post(self, request):
         print(request.POST)
+
         new_queue = Queue()
+        new_queue.user = get_user(request)
 
         new_queue.file_url = request.POST['file_url']
 
